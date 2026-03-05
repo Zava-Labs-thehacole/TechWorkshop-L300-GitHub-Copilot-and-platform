@@ -1,0 +1,18 @@
+name: zavastorefront
+metadata:
+  template: zavastorefront-infra@1.0.0
+  description: ZavaStorefront Azure Infrastructure with AZD
+
+services:
+  app:
+    project: ./src
+    language: csharp
+    host: appservice
+
+infra:
+  provider: bicep
+  path: infra
+  module: main
+
+pipeline:
+  provider: github
