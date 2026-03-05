@@ -19,6 +19,12 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton<ProductService>();
 builder.Services.AddScoped<CartService>();
 
+// Register the Phi-4 chat service with a dedicated HttpClient (60-second timeout for AI inference)
+builder.Services.AddHttpClient<Phi4Service>(client =>
+{
+    client.Timeout = TimeSpan.FromSeconds(60);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
